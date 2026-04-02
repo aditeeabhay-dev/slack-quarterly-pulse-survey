@@ -1,0 +1,37 @@
+# ============================================================
+# Quarterly Survey Sender — GitHub Actions Workflow
+# Runs automatically every 3 months (Jan, Apr, Jul, Oct)
+# You can also trigger it manually from the Actions tab
+# ============================================================
+
+name: Send Quarterly Survey
+
+on:
+  schedule:
+    # Runs at 9:00 AM UTC on the 1st of January, April, July, October
+    - cron: "0 9 1 1,4,7,10 *"
+
+  # Allows you to trigger this manually from GitHub Actions UI (great for testing)
+  workflow_dispatch:
+
+jobs:
+  send-survey:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Send survey to all Slack users
+        run: node send_survey.js
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
