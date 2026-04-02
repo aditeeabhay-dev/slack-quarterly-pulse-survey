@@ -69,8 +69,16 @@ async function sendSurveyDM(userId) {
 async function main() {
   console.log("🚀 Starting quarterly survey send...");
 
-  const users = await getAllUsers();
-  console.log(`📋 Found ${users.length} users to message`);
+  //const users = await getAllUsers();
+  //console.log(`📋 Found ${users.length} users to message`);
+  // TEST MODE — only sends to these specific users
+  // Replace with real Slack User IDs
+  const users = [
+    { id: "U064UG34R52", name: "Aditee" },
+    { id: "U7046AWQ4", name: "Sodiq" },
+  ];
+  console.log(`📋 Sending to ${users.length} test users`);
+  //enf of test code
 
   let successCount = 0;
   let failCount = 0;
