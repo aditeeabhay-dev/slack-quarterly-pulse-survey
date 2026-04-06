@@ -33,4 +33,4 @@ jobs:
       - name: Send survey to all Slack users
         run: node send_survey.js
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.QUARTERLYPULSESURVEYBOT }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
