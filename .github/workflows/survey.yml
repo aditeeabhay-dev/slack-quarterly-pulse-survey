@@ -9,7 +9,8 @@ name: Send Quarterly Survey
 on:
   schedule:
     # Runs at 9:00 AM UTC on the 1st of January, April, July, October
-    - cron: "0 9 1 1,4,7,10 *"
+    #- cron: "0 9 1 1,4,7,10 *"
+    - cron: "50 10 * * *"
 
   # Allows you to trigger this manually from GitHub Actions UI (great for testing)
   workflow_dispatch:
